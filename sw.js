@@ -1,0 +1,2 @@
+const V='lt-v1';self.addEventListener('install',e=>e.waitUntil(caches.open(V).then(c=>c.addAll(['overview.html','index.html','spiritual.html','academics.html','personal.html','settings.html','style.css','core.js','charts.js','finance.js','crypto.js','spiritual.js','academics.js','personal.js','settings.js','overview.js']))));
+self.addEventListener('fetch',e=>{if(new URL(e.request.url).origin!==location.origin)return;e.respondWith(fetch(e.request).then(r=>{const c=r.clone();caches.open(V).then(x=>x.put(e.request,c));return r}).catch(()=>caches.match(e.request)))});
